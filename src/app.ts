@@ -7,6 +7,7 @@ import { Request, Response, NextFunction } from 'express';
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
 import promoRoutes from './routes/promoRoutes';
+import etudiantRoutes from './routes/etudiantRoutes';
 
 interface ErrorWithStatus extends Error {
 	status?: number;
@@ -32,6 +33,7 @@ app.use('/api/users', userRoutes); // Use the userRoutes router for all routes s
 app.use('/api/auth', authRoutes); // Use the authRoutes router for all routes starting with /auth
 app.use('/api/promo', promoRoutes); // Use the promoRoutes router for all routes starting with /promo
 app.use('/api/sousgrp', promoRoutes); // Use the promoRoutes router for all routes starting with /promo
+app.use('/api/etudiant', etudiantRoutes); // Use the promoRoutes router for all routes starting with /promo
 
 app.use((req: Request, res: Response, next: NextFunction) => { // Handle 404 errors
 	const error: ErrorWithStatus = new Error('Not found');

@@ -25,6 +25,7 @@ export const signin = async (req: Request, res: Response) => {
     res.status(200).json({
       message: `Utilisateur ${user.id} connecté avec succès`,
       token,
+      user
     });
   } catch (error) {
     res.status(500).json({ message: JSON.stringify(error) });
