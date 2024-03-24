@@ -15,7 +15,7 @@ export const createUser = async (req: Request, res: Response) => {
 
 //put
 export const updateUser = async (req: Request, res: Response) => {
-
+    
 }
 
 //delete
