@@ -1,15 +1,14 @@
-import { Knex } from "knex";
+import type { Knex } from "knex";
 
 
-
-export function up (knex: Knex) {
-	return knex.schema.createTable('etudiant', (table) => {
+export async function up(knex: Knex): Promise<void> {
+    return knex.schema.createTable('etudiant', (table) => {
 		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-		table.bigInteger('code_etudiant').primary;
+		table.bigInteger('code_etudiant').primary().unique();
 		table.date('date_creation');
 		table.string('code_composante');
 		table.string('libcomposante');
-		//table.string('libetape'); // foreign Promo.libetape
+		table.string('libetape'); // foreign Promo.libetape
 		table.string('codeetape');
 		table.integer('versionetape');
 		table.string('statut');
@@ -47,12 +46,11 @@ export function up (knex: Knex) {
 		table.string('lib_type_dernier_diplome');
 		table.string('annee_dernier_diplome');        
 		// foreigh key
-		table.string('libetape').references('libetape').inTable('promo');
+		table.foreign('libetape').references('libetape').inTable('promo');
 	})
 }
 
-export function down (knex: Knex) {
-	knex.schema.dropTable('etudiant');
-};
 
-// npx knex migrate:latest
+export async function down(knex: Knex): Promise<void> {
+    knex.schema.dropTable('etudiant');
+};

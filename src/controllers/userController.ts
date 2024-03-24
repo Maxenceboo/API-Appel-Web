@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import db from '../config/knexfile'; // Assurez-vous que le chemin d'importation est correct
+import db from '../../db'; // Assurez-vous que le chemin d'importation est correct
 
 // Obtenir tous les utilisateurs
 export const getAllUser = async (req: Request, res: Response) => {
@@ -16,11 +16,8 @@ export const getUserById = async (req: Request, res: Response) => {
 	try {
 		const id = req.params.id;
 		const user = await db('user').where({ id }).first();
-		if (user) {
-			res.json(user);
-		} else {
-			res.status(404).json({ message: 'Utilisateur non trouvé' });
-		}
+		if (!user) return res.status(404).json({ message: 'Utilisateur non trouvé' });
+		res.json(user);
 	} catch (error) {
 		res.status(500).json({ message: (error as Error).message });
 	}

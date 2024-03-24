@@ -1,11 +1,10 @@
-import { Knex } from "knex";
+import type { Knex } from "knex";
 
 
-
-export function up (knex: Knex) {
+export async function up(knex: Knex): Promise<void> {
 	return knex.schema.createTable('user', (table) => {
 		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-		table.bigInteger('id_user').primary;
+		table.bigInteger('id_user').primary().unique();
 		table.string('nom');
 		table.string('prenom');
 		table.string('mail');
@@ -15,8 +14,7 @@ export function up (knex: Knex) {
 	})
 }
 
-export function down (knex: Knex) {
+
+export async function down(knex: Knex): Promise<void> {
 	knex.schema.dropTable('user');
 };
-
-// npx knex migrate:latest

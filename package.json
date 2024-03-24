@@ -22,7 +22,9 @@
     "dev": "npm run build && npm run start"
   },
   "dependencies": {
+    "@types/knex": "^0.16.1",
     "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "ts-node": "^10.9.2"
   }
 }

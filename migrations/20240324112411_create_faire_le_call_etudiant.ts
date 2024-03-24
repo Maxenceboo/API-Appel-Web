@@ -1,6 +1,7 @@
-import { Knex } from "knex";
+import type { Knex } from "knex";
 
-export function up(knex: Knex) {
+
+export async function up(knex: Knex): Promise<void> {
 	return knex.schema.createTable('faire_le_call_etudiant', (table) => {
 		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 		// foreigh key
@@ -11,8 +12,6 @@ export function up(knex: Knex) {
 	})
 }
 
-export function down (knex: Knex) {
+export async function down(knex: Knex): Promise<void> {
 	knex.schema.dropTable('faire_le_call_etudiant');
 };
-
-// npx knex migrate:latest

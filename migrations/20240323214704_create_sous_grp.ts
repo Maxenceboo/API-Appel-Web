@@ -1,9 +1,10 @@
-import { Knex } from "knex";
+import type { Knex } from "knex";
 
-export function up (knex: Knex) {
+
+export async function up(knex: Knex): Promise<void> {
 	return knex.schema.createTable('sous_grp', (table) => {
 		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-		table.bigInteger('id_sousgrp').primary;
+		table.bigInteger('id_sousgrp').unique().primary();
 		table.string('nom');
 		table.integer('nb_etudiant');
 		// foreigh key
@@ -11,8 +12,6 @@ export function up (knex: Knex) {
 	})
 }
 
-export function down (knex: Knex) {
+export async function down(knex: Knex): Promise<void> {
 	knex.schema.dropTable('sous_grp');
 };
-
-// npx knex migrate:latest

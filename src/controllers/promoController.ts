@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import db from '../config/knexfile'; // Assurez-vous que le chemin d'importation est correct
+import db from '../../db'; // Assurez-vous que le chemin d'importation est correct
 
 
 export const getAllPromo = async (req: Request, res: Response) => {
