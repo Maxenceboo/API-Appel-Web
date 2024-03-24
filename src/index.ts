@@ -1,5 +1,5 @@
 import app from './app'; // Importation correcte de l'export par défaut
-import db from '../db';
+import db from './db';
 
 const port = process.env.PORT || 3030; // Use the port defined in the environment variables or 3000
 

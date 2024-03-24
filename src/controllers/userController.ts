@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import db from '../../db'; // Assurez-vous que le chemin d'importation est correct
+import db from '../db'; // Assurez-vous que le chemin d'importation est correct
 
 // Obtenir tous les utilisateurs
 export const getAllUser = async (req: Request, res: Response) => {
